@@ -1,6 +1,6 @@
 # 🌌 Voidwalker Planck
 
-![Project Banner](banner.png)
+![Project Banner](assets/banner.png)
 
 ## 📋 Overview
 This repository contains the high-performance, version-controlled firmware for my **Planck EZ**. Optimized for **macOS (M4 Apple Silicon)** and a terminal-first workflow, this layout prioritizes ergonomic efficiency and minimal hand movement.
@@ -12,7 +12,7 @@ This repository contains the high-performance, version-controlled firmware for m
 ### 1. Colemak-DH Home Row Mods (GACS)
 I utilize a mirrored **GACS (GUI, Alt, Ctrl, Shift)** Home Row Mod paradigm. This allows for complex system-level modifiers without leaving the home row, drastically reducing RSI risk and increasing speed.
 
-![Home Row Mods Map](homerow.png)
+![Home Row Mods Map](assets/homerow.png)
 
 * **Left Hand**: A (GUI), R (Alt), S (Ctrl), T (Shift).
 * **Right Hand**: N (Shift), E (Ctrl), I (Alt), O (GUI).
@@ -21,7 +21,7 @@ I utilize a mirrored **GACS (GUI, Alt, Ctrl, Shift)** Home Row Mod paradigm. Thi
 ### 2. Multi-Layer Logic (7 Layers)
 The layout is organized into 7 distinct layers, navigated via tap-dance and momentary toggles.
 
-![Layer Logic Flowchart](layers.png)
+![Layer Logic Flowchart](assets/layers.png)
 
 * **_BASE (0)**: Colemak-DH for pure alphanumeric entry.
 * **_NUM (4)**: Numpad and navigation (Arrows, Home, End, PgUp/Dn).
