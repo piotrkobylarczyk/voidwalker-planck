@@ -1,44 +1,52 @@
-# 🌌 Voidwalker Planck
+# 🌌 voidwalker-planck
 
 ![Project Banner](assets/banner.png)
 
-## 📋 Overview
-This repository contains the high-performance, version-controlled firmware for my **Planck EZ**. Optimized for **macOS (M4 Apple Silicon)** and a terminal-first workflow, this layout prioritizes ergonomic efficiency and minimal hand movement.
+## ⚡ High-Efficiency Ortholinear Architecture
+Firmware configuration for the **ZSA Planck EZ**, engineered for **macOS (Apple Silicon M4)** environments. This repository represents a transition from standard QWERTY/Mouse workflows to a keyboard-centric, low-latency paradigm.
+
+### 📐 Technical Specifications
+- **Layout**: Colemak-DH (Ortholinear optimized)
+- **Framework**: QMK (Quantum Mechanical Keyboard) Firmware
+- **Mod Paradigm**: GACS (GUI, Alt, Ctrl, Shift) Home Row Mods
+- **Target OS**: macOS (Primary), Windows (Baseline compatible)
 
 ---
 
-## 🛠️ Key Architectural Pillars
-
-### 1. Colemak-DH Home Row Mods (GACS)
-I utilize a mirrored **GACS (GUI, Alt, Ctrl, Shift)** Home Row Mod paradigm. This allows for complex system-level modifiers without leaving the home row, drastically reducing RSI risk and increasing speed.
+## 🎹 The Logic Layer: Home Row Mods (GACS)
+To mitigate RSI and maximize words-per-minute (WPM), this layout utilizes a mirrored **GACS** (GUI, Alt, Ctrl, Shift) home row mod configuration. This eliminates the need for uncomfortable "claw" grips for system shortcuts.
 
 ![Home Row Mods Map](assets/homerow.png)
 
-* **Left Hand**: A (GUI), R (Alt), S (Ctrl), T (Shift).
-* **Right Hand**: N (Shift), E (Ctrl), I (Alt), O (GUI).
-* **Alt Gr**: Mapped to `X` and `.` for extended character access.
-
-### 2. Multi-Layer Logic (7 Layers)
-The layout is organized into 7 distinct layers, navigated via tap-dance and momentary toggles.
-
-![Layer Logic Flowchart](assets/layers.png)
-
-* **_BASE (0)**: Colemak-DH for pure alphanumeric entry.
-* **_NUM (4)**: Numpad and navigation (Arrows, Home, End, PgUp/Dn).
-* **_SYM (5)**: Advanced symbols and **Mouse Emulation** (Mouse Up/Down, Clicks, Scroll).
-* **_FN (6)**: F-keys (F1-F12), Media controls, and System requests.
-
-### 3. Tap-Hold & Thumb Cluster Utility
-* **`WIN_NUM`**: Tap for **Command (GUI)**, Hold for **Num (4)** layer.
-* **`FN_HLD`**: Tap for **Escape**, Hold for **Fn (6)** layer.
-* **`SYM_HLD`**: Dedicated hold on the `/` key for the **Sym (5)** layer.
+| Key | Tap | Hold (Modifier) |
+| :--- | :--- | :--- |
+| **A / O** | A / O | **GUI (Command ⌘)** |
+| **R / I** | R / I | **ALT (Option ⌥)** |
+| **S / E** | S / E | **CTL (Control ⌃)** |
+| **T / N** | T / N | **SFT (Shift ⇧)** |
 
 ---
 
-## 🚀 Installation & Compilation
+## 🗺️ Spatial Mapping: 7-Layer Matrix
+The Planck EZ's 47-key footprint is expanded through a multi-layer modal architecture. Each layer is context-specific to minimize finger travel.
 
-1. **Environment Setup**: Ensure `qmk` CLI is installed and configured for macOS.
-2. **Compile**:
-   ```bash
-   qmk compile -kb planck/ez -km mac_colemak
-3. Flash: Use Keymapp to flash the resulting .bin file to the Planck EZ.
+![Layer Logic Flowchart](assets/layers.png)
+
+### Core Layer Definitions:
+- **_BASE (0)**: Colemak-DH alphanumeric entry.
+- **_NUM (4)**: Numpad and cursor navigation (H, N, E, I mapping).
+- **_SYM (5)**: Code-centric symbols and **Integrated Mouse Emulation**.
+- **_FN (6)**: Function keys (F1-F12), Media controls, and Bootloader access.
+
+---
+
+## 🛠️ Build & Deployment
+
+### Dependencies
+- **QMK CLI**: `brew install qmk/qmk/qmk`
+- **Compiler**: `arm-none-eabi-gcc` (embedded toolchain)
+- **Flashing**: [Keymapp](https://www.zsa.io/flash/)
+
+### Compilation String
+```bash
+qmk compile -kb planck/ez -km mac_colemak
