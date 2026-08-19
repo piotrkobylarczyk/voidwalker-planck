@@ -1,52 +1,63 @@
-# 🌌 voidwalker-planck
+# voidwalker-planck
 
-![Project Banner](assets/banner.png)
+QMK keymap for the **ZSA Planck EZ**: Colemak-DH, home-row mods (GACS), layers for numbers, symbols, mouse, and function keys.
 
-## ⚡ High-Efficiency Ortholinear Architecture
-Firmware configuration for the **ZSA Planck EZ**, engineered for **macOS (Apple Silicon M4)** environments. This repository represents a transition from standard QWERTY/Mouse workflows to a keyboard-centric, low-latency paradigm.
+Aimed at **macOS** (Command on home row). Usable on Windows with the usual modifier differences.
 
-### 📐 Technical Specifications
-- **Layout**: Colemak-DH (Ortholinear optimized)
-- **Framework**: QMK (Quantum Mechanical Keyboard) Firmware
-- **Mod Paradigm**: GACS (GUI, Alt, Ctrl, Shift) Home Row Mods
-- **Target OS**: macOS (Primary), Windows (Baseline compatible)
+![Banner](assets/banner.png)
 
----
+## Why this layout
 
-## 🎹 The Logic Layer: Home Row Mods (GACS)
-To mitigate RSI and maximize words-per-minute (WPM), this layout utilizes a mirrored **GACS** (GUI, Alt, Ctrl, Shift) home row mod configuration. This eliminates the need for uncomfortable "claw" grips for system shortcuts.
+- **Colemak-DH** on a 47-key ortholinear board (less finger travel than QWERTY).
+- **Home-row mods (GACS)** — hold for modifiers, tap for letters — so common shortcuts do not need pinky stretches.
+- **Layers** for numpad/nav, symbols + mouse keys, and F-keys/media instead of a large board.
 
-![Home Row Mods Map](assets/homerow.png)
+## Home-row mods (GACS)
 
-| Key | Tap | Hold (Modifier) |
-| :--- | :--- | :--- |
-| **A / O** | A / O | **GUI (Command ⌘)** |
-| **R / I** | R / I | **ALT (Option ⌥)** |
-| **S / E** | S / E | **CTL (Control ⌃)** |
-| **T / N** | T / N | **SFT (Shift ⇧)** |
+| Key (Colemak) | Tap | Hold        |
+|---------------|-----|-------------|
+| A / O         | A/O | GUI (⌘)     |
+| R / I         | R/I | Alt (⌥)     |
+| S / E         | S/E | Ctrl        |
+| T / N         | T/N | Shift       |
 
----
+![Home row](assets/homerow.png)
 
-## 🗺️ Spatial Mapping: 7-Layer Matrix
-The Planck EZ's 47-key footprint is expanded through a multi-layer modal architecture. Each layer is context-specific to minimize finger travel.
+If you are new to home-row mods: expect a short adjustment period (accidental mods while typing). Tuning `TAPPING_TERM` in `config.h` helps.
 
-![Layer Logic Flowchart](assets/layers.png)
+## Layers
 
-### Core Layer Definitions:
-- **_BASE (0)**: Colemak-DH alphanumeric entry.
-- **_NUM (4)**: Numpad and cursor navigation (H, N, E, I mapping).
-- **_SYM (5)**: Code-centric symbols and **Integrated Mouse Emulation**.
-- **_FN (6)**: Function keys (F1-F12), Media controls, and Bootloader access.
+| Layer   | Role |
+|---------|------|
+| `_BASE` | Colemak-DH |
+| `_NUM`  | Numpad + cursor (H N E I-style nav) |
+| `_SYM`  | Symbols + mouse keys |
+| `_FN`   | F1–F12, media, bootloader |
 
----
+![Layers](assets/layers.png)
 
-## 🛠️ Build & Deployment
+Exact key positions: see `keymap.c` / `keymap.json`.
 
-### Dependencies
-- **QMK CLI**: `brew install qmk/qmk/qmk`
-- **Compiler**: `arm-none-eabi-gcc` (embedded toolchain)
-- **Flashing**: [Keymapp](https://www.zsa.io/flash/)
+## Build & flash
 
-### Compilation String
+**Requirements**
+- [QMK CLI](https://docs.qmk.fm/#/newbs) (`brew install qmk/qmk/qmk` on macOS)
+- ARM GCC toolchain
+- [Keymapp](https://www.zsa.io/flash/) (or QMK Toolbox) to flash
+
+**Compile** (adjust keymap name if you renamed it):
+
 ```bash
 qmk compile -kb planck/ez -km mac_colemak
+
+If this repo is used as a keymap under qmk_firmware/keyboards/planck/ez/keymaps/, place the files there and use your keymap folder name in -km.
+Flash with Keymapp: put the board in bootloader mode, select the .bin/.hex, flash.
+## Files
+
+keymap.c - Layout and layers
+keymap.json - Optional / configurator export
+config.h - Tapping term, features
+rules.mk - Feature flags
+
+## Credits / license
+Built for personal use on a Planck EZ. Adapt freely. QMK is under its own license; this keymap config is provided as-is.
